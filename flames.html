@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		body { background:pink url("https://images.cooltext.com/5652088.gif" )
+      no-repeat fixed top;}
+		</style>
+<title>Flames Game</title>
+<script>
+function calculateFlames() {
+// Get input values
+var name1 = document.getElementById("name1").value.trim().toLowerCase();
+			var name2 = document.getElementById("name2").value.trim().toLowerCase();
+
+			// Remove common letters from names
+			for (var i = 0; i < name1.length; i++) {
+				for (var j = 0; j < name2.length; j++) {
+					if (name1[i] === name2[j]) {
+						name1 = name1.replace(name1[i], '');
+						name2 = name2.replace(name2[j], '');
+					}
+				}
+			}
+
+			// Count remaining letters
+			var count = name1.length + name2.length;
+
+			// Determine relationship based on FLAMES acronym
+			var relationship = '';
+			if (count > 0) {
+				var flames = ['Friends', 'Lovers', 'Angry', 'Married', 'Engaged', 'Siblings'];
+				var index = (count - 1) % flames.length;
+				relationship = flames[index];
+			}
+
+			// Display result
+			document.getElementById("result").innerHTML = relationship;
+		}
+	</script>
+</head>
+<body style="background-color:white"><br><br><br>
+	
+	<font size="6" face="times" color="black">
+		<h2  style="background-color: rgb(194, 206, 179);">Enter two names to determine your relationship:</h2></font>
+		<font size="6" face="times" color="black">
+	<label for="name1">Name 1:</label>
+	<input type="text" id="name1" size="100"><br>
+	<label for="name2">Name 2:</label>
+	<input type="text" id="name2" size="100"><br></font><br><br>
+	<button onclick="calculateFlames()" style="text-decoration: rgb(204, 23, 23);">Check</button><br><br>
+	<font face="timesnewroman" size="5"  color="black">
+	Your relationship is: <span id="result"></span></font><br><br><br>
+	<font face="times" size="4"><marquee>This is just for fun,don't think more on it.....</marquee></font>
+
+</body>
+</html>
